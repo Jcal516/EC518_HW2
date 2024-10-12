@@ -394,112 +394,55 @@ class LaneDetection:
         a_groups = self.dp_means(a_c, True)
         b_groups = self.dp_means(b_c, False)
 
-        # first lane_boundary points
-        #lane_boundary1_points, lane_boundary2_points, lane_found = self.find_first_lane_point(gradient_sum)
+        boundary = np.concatenate((a_groups, b_groups))
+        image = np.zeros((240,320))
+        for i in range(boundary.shape[0]):
+            image[int(boundary[i, 1]), int(boundary[i, 0])] = 1
 
-        # if no lane was found,use lane_boundaries of the preceding step
-        if True:#lane_found:
+        ################
+        ##### TODO #####
+
+        #Turn image back out of bird's eye view
+
+        ##### TODO #####
+        ################
+
+        left = image[:,0:int(image.shape[1]/2)]
+        right = image[:,int(image.shape[1]/2)-1:-1]
+
+        left_b = np.zeros((int(np.sum(left)), 2))
+        count = 0
+        for i in range(left.shape[0]):
+            for j in range(left.shape[1]):
+                if(np.sum(left[i,j])):
+                    left_b[count,0] = j
+                    left_b[count,1] = i
+                    count+=1
+
+
+
+        right_b = np.zeros((int(np.sum(right)), 2))
+        count = 0
+        for i in range(left.shape[0]):
+            for j in range(left.shape[1]):
+                if(np.sum(right[i,j])):
+                    right_b[count,0] = j + left.shape[1]
+                    right_b[count,1] = i
+                    count+=1
+        
+        lane_boundary1_points = left_b
+        lane_boundary2_points = right_b
+        
+        lane_boundary1, left_u = splprep([lane_boundary1_points[:,0], lane_boundary1_points[:,1]], s=10000)
+        lane_boundary2, left_u = splprep([lane_boundary2_points[:,0], lane_boundary2_points[:,1]], s=10000)
             
-            ##### TODO #####
-            #  in every iteration: 
-            # 1- find maximum/edge with the lowest distance to the last lane boundary point 
-            # 2- append maxium to lane_boundary1_points or lane_boundary2_points
-            # 3- delete maximum from maxima
-            # 4- stop loop if there is no maximum left 
-            #    or if the distance to the next one is too big (>=100)
+        #else:
+        #    lane_boundary1 = self.lane_boundary1_old
+        #    lane_boundary2 = self.lane_boundary2_old
+        ################
 
-            # lane_boundary 1
-
-            # lane_boundary 2
-
-            ################
-
-            '''
-            distance_thresh = 20
-            stopping_thresh = 10
-
-            left_collect = np.flip(lane_boundary1_points)
-            right_collect = np.flip(lane_boundary2_points)
-
-            left_indexs = np.flip(maxima[:,0])
-            stopping = 0
-            for i in range(left.shape[0]):
-                if(i == 0):
-                    continue
-                distance = np.sqrt((left_collect[0,1] - left_indexs[i]) ** 2) #(left_collect[-1,0] - i) ** 2 + 
-                if(distance < distance_thresh):
-                    stopping = 0
-                    to_add = np.array([[i, left_indexs[i]]])
-                    left_collect = np.concatenate((to_add, left_collect))
-                else:
-                    stopping += 1
-                    if(stopping > stopping_thresh):
-                        break
-
-            right_indexs = np.flip(maxima[:,1]) - right.shape[1]
-            stopping = 0
-            for i in range(right.shape[0]):
-                if(i < 2):
-                    continue
-                distance = np.sqrt((right_collect[0,1] - right_indexs[i]) ** 2) #(left_collect[-1,0] - i) ** 2 + 
-                if(distance < distance_thresh):
-                    stopping = 0
-                    to_add = np.array([[i, right_indexs[i]]])
-                    right_collect = np.concatenate((to_add, right_collect))
-                else:
-                    stopping += 1
-                    if(stopping > stopping_thresh):
-                        break
-
-            left_x = left_collect[:,1]
-            left_y = left_collect[:,0].astype(int)
-            right_x = right_collect[:,1]
-            right_y = right_collect[:,0].astype(int)
-            
-
-            lane_boundary1_points = np.empty([left_x.shape[0], 2])
-            for i in range(left_x.shape[0]):
-                lane_boundary1_points[i, 0] = left_y[i]
-                lane_boundary1_points[i, 1] = left_x[i]
-
-            lane_boundary2_points = np.empty([right_x.shape[0], 2])
-            for i in range(right_x.shape[0]):
-                lane_boundary2_points[i, 0] = right_y[i]
-                lane_boundary2_points[i, 1] = right_x[i]
-            '''
-            lane_boundary1_points = a_groups
-            lane_boundary2_points = b_groups
-
-            ##### TODO #####
-            # spline fitting using scipy.interpolate.splprep 
-            # and the arguments self.spline_smoothness
-            # 
-            # if there are more lane_boundary points points than spline parameters 
-            # else use perceding spline
-            if True:#lane_boundary1_points.shape[0] > 4 and lane_boundary2_points.shape[0] > 4:
-
-                # Pay attention: the first lane_boundary point might occur twice
-                # lane_boundary 1
-
-                # lane_boundary 2
-
-                #lane_boundary1_points[:, 0] = lane_boundary1_points[:, 0] * left.shape[0] / left_collect[0,0]
-                #lane_boundary2_points[:, 0] = lane_boundary2_points[:, 0] * right.shape[0] / right_collect[0,0]
-                
-
-                #lane_boundary1, left_u = splprep([np.flip(left_y), np.flip(left_x)], s=10000)
-                #lane_boundary2, right_u = splprep([np.flip(right_y), np.flip(right_x)], s=10000)
-                lane_boundary1, left_u = splprep([lane_boundary1_points[:,0], lane_boundary1_points[:,1]], s=10000)
-                lane_boundary2, left_u = splprep([lane_boundary2_points[:,0], lane_boundary2_points[:,1]], s=10000)
-                
-            else:
-                lane_boundary1 = self.lane_boundary1_old
-                lane_boundary2 = self.lane_boundary2_old
-            ################
-
-        else:
-            lane_boundary1 = self.lane_boundary1_old
-            lane_boundary2 = self.lane_boundary2_old
+        lane_boundary1 = self.lane_boundary1_old
+        lane_boundary2 = self.lane_boundary2_old
 
         self.lane_boundary1_old = lane_boundary1
         self.lane_boundary2_old = lane_boundary2
