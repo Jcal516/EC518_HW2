@@ -28,6 +28,7 @@ class LaneDetection:
         self.distance_maxima_gradient = distance_maxima_gradient
         self.lane_boundary1_old = 0
         self.lane_boundary2_old = 0
+        self.state_image_full_old = 0
     
 
     def front2bev(self, front_view_image):
@@ -350,6 +351,9 @@ class LaneDetection:
         out[:,0] = out[:,0]*(np.max(c_in[:,0])-np.min(c_in[:,0])) + np.min(c_in[:,0])
         out[:,1] = out[:,1]*(np.max(c_in[:,1])-np.min(c_in[:,1])) + np.min(c_in[:,1])
 
+        if(out.shape[0] < 4):
+            raise error()
+
         return out
 
 
@@ -367,7 +371,13 @@ class LaneDetection:
         '''
 
         #gray_state = self.cut_gray(state_image_full)
-        bev = self.front2bev(state_image_full)
+        try:
+            bev = self.front2bev(state_image_full) # sometimes fails randomly?
+        except:
+            bev = self.front2bev(self.state_image_full_old)
+        else:
+            self.state_image_full_old = state_image_full
+
         gray_state = np.dot(bev, [0.333, 0.333, 0.333]) # evenly sample each channel
 
         # edge detection via gradient sum and thresholding
@@ -391,67 +401,73 @@ class LaneDetection:
         a_c = a_c.T
         b_c = np.delete(b_c, b_c[0, :] < 0, axis=1)
         b_c = b_c.T
-        a_groups = self.dp_means(a_c, True)
-        b_groups = self.dp_means(b_c, False)
-
-        boundary = np.concatenate((a_groups, b_groups))
-        image = np.zeros((240,320))
-        for i in range(boundary.shape[0]):
-            image[int(boundary[i, 1]), int(boundary[i, 0])] = 1
-
-        ################
-        ##### TODO #####
-
-        #Turn image back out of bird's eye view
-
-        ##### TODO #####
-        ################
-
-        left = image[:,0:int(image.shape[1]/2)]
-        right = image[:,int(image.shape[1]/2)-1:-1]
-
-        left_b = np.zeros((int(np.sum(left)), 2))
-        count = 0
-        for i in range(left.shape[0]):
-            for j in range(left.shape[1]):
-                if(np.sum(left[i,j])):
-                    left_b[count,0] = j
-                    left_b[count,1] = i
-                    count+=1
-
-
-
-        right_b = np.zeros((int(np.sum(right)), 2))
-        count = 0
-        for i in range(left.shape[0]):
-            for j in range(left.shape[1]):
-                if(np.sum(right[i,j])):
-                    right_b[count,0] = j + left.shape[1]
-                    right_b[count,1] = i
-                    count+=1
         
-        lane_boundary1_points = left_b
-        lane_boundary2_points = right_b
-        
-        lane_boundary1, left_u = splprep([lane_boundary1_points[:,0], lane_boundary1_points[:,1]], s=10000)
-        lane_boundary2, left_u = splprep([lane_boundary2_points[:,0], lane_boundary2_points[:,1]], s=10000)
+        try:
+            a_groups = self.dp_means(a_c, True)
+        except:
+            use_new_left = False
+        else:
+            use_new_left = True
+        try:
+            b_groups = self.dp_means(b_c, False)
+        except:
+            use_new_right = False
+        else:
+            use_new_right = True
+
+        if(use_new_left and use_new_right):
+            '''boundary = np.concatenate((a_groups, b_groups))
+            image = np.zeros((240,320))
+            for i in range(boundary.shape[0]):
+                image[int(boundary[i, 1]), int(boundary[i, 0])] = 1
+
+            left = image[:,0:int(image.shape[1]/2)]
+            right = image[:,int(image.shape[1]/2)-1:-1]
+
+            left_b = np.zeros((int(np.sum(left)), 2))
+            count = 0
+            for i in range(left.shape[0]):
+                for j in range(left.shape[1]):
+                    if(np.sum(left[i,j])):
+                        left_b[count,0] = j
+                        left_b[count,1] = i
+                        count+=1
+
+            right_b = np.zeros((int(np.sum(right)), 2))
+            count = 0
+            for i in range(left.shape[0]):
+                for j in range(left.shape[1]):
+                    if(np.sum(right[i,j])):
+                        right_b[count,0] = j + left.shape[1]
+                        right_b[count,1] = i
+                        count+=1'''
             
-        #else:
-        #    lane_boundary1 = self.lane_boundary1_old
-        #    lane_boundary2 = self.lane_boundary2_old
-        ################
+            lane_boundary1_points = a_groups
+            lane_boundary2_points = b_groups
+            
+            lane_boundary1, left_u = splprep([lane_boundary1_points[:,0], lane_boundary1_points[:,1]], s=10000)
+            lane_boundary2, left_u = splprep([lane_boundary2_points[:,0], lane_boundary2_points[:,1]], s=10000)
+                
+            #else:
+            #    lane_boundary1 = self.lane_boundary1_old
+            #    lane_boundary2 = self.lane_boundary2_old
+            ################
 
-        lane_boundary1 = self.lane_boundary1_old
-        lane_boundary2 = self.lane_boundary2_old
+            self.lane_boundary1_old = lane_boundary1
+            self.lane_boundary2_old = lane_boundary2
 
-        self.lane_boundary1_old = lane_boundary1
-        self.lane_boundary2_old = lane_boundary2
+            # testing
+            plt.figure("test")
+            plt.scatter(lane_boundary1_points[:,0],lane_boundary1_points[:,1])
+            plt.scatter(lane_boundary2_points[:,0],lane_boundary2_points[:,1])
+        
+        else:
+            lane_boundary1 = self.lane_boundary1_old
+            lane_boundary2 = self.lane_boundary2_old
 
         plt.figure("test")
         plt.gcf().clear()
-        #plt.imshow(maxima_img)
-        plt.scatter(lane_boundary1_points[:,0],lane_boundary1_points[:,1])
-        plt.scatter(lane_boundary2_points[:,0],lane_boundary2_points[:,1])
+        plt.imshow(image)#maxima_img)
         plt.xlim(0, 320)
         plt.ylim(0, 240)
         plt.axis('off')
