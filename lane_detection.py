@@ -467,7 +467,7 @@ class LaneDetection:
 
         plt.figure("test")
         plt.gcf().clear()
-        plt.imshow(image)#maxima_img)
+        plt.imshow(maxima_img)
         plt.xlim(0, 320)
         plt.ylim(0, 240)
         plt.axis('off')
