@@ -281,7 +281,7 @@ class LaneDetection:
 
         return lane_boundary1_startpoint, lane_boundary2_startpoint, lanes_found
 
-    def dp_means(self, c_in, left_is_true):
+    def dp_means(self, c_in, left_is_true): # custom algorthim to find the boundaries
         l = .1
         smallest_cluster = 25
         max_clusters = 10
@@ -300,8 +300,8 @@ class LaneDetection:
         means[clusters - 1] = c[0,0,clusters]
         sizes[clusters - 1] += 1
         ind = 0
-        for ind in range(c.shape[0]):
-            if(ind == 0):
+        for ind in range(c.shape[0]): # runs k-means, but instead of fitting to a set number of clusters,
+            if(ind == 0):             # makes a new cluster when the error of a point is over a threshhold
                 continue
             if(clusters == max_clusters):
                 print("increase l!")
@@ -309,7 +309,7 @@ class LaneDetection:
             a = c[ind,0,0]
             ds = np.zeros((max_clusters)) - 1
             for i in range(clusters):
-                ds[i] = np.linalg.norm(a-means[i])
+                ds[i] = np.linalg.norm(a-means[i]) # assigns a point to a cluster based on its difference in the y axis
             if(np.min(ds[ds > -1]) > l):
                 clusters += 1
                 c[ind,:,clusters] = c[ind,:,0]
@@ -323,12 +323,12 @@ class LaneDetection:
                 means[argmin] = (means[argmin] * sizes[argmin] + c[ind,0,argmin + 1]) / (sizes[argmin] + 1)
                 sizes[argmin] += 1
         
-        for i in range(clusters):
+        for i in range(clusters): # gets rid of any clusters too small to be the boundary
             if(sizes[i] < smallest_cluster):
                 c[:,:,i + 1] = np.zeros((c.shape[0], c.shape[1]))
         
         thresh = 3
-        for i in range(clusters):
+        for i in range(clusters): # gets rid of outliers within each cluster
             if(not np.sum(c[:,:,i + 1])):
                 continue
             mean = np.mean(c[c[:,0,i + 1] > 0,0,i + 1])
@@ -338,11 +338,11 @@ class LaneDetection:
             std = np.std(c[c[:,0,i + 1] > 0,1,i + 1])
             c[np.abs(c[:,1,i + 1] - mean) > thresh * std, :, i + 1] = 0
 
-        if(left_is_true):
+        if(left_is_true): # if left side of the screen, return cluster closest to the right side of the screen
             horiz = c[:,0,:]
             out = c[:,:,np.argmax(np.max(horiz, axis=0))]
             out = out[[out[:,:] != [0,0]][0][:,0],:]
-        else:
+        else: # if right side of the screen, return cluster closest to the right side of the screen
             horiz = c[:,0,:]
             horiz[horiz[:,:] == 0] = 1
             out = c[:,:,np.argmin(np.min(horiz, axis=0))]
@@ -358,7 +358,7 @@ class LaneDetection:
         return out
 
 
-    def lane_detection(self, state_image_full, fig_test):
+    def lane_detection(self, state_image_full):#, fig_test):
         '''
         ##### TODO #####
         This function should perform the road detection 
@@ -468,7 +468,7 @@ class LaneDetection:
             lane_boundary1 = self.lane_boundary1_old
             lane_boundary2 = self.lane_boundary2_old
 
-        plt.figure("test")
+        '''plt.figure("test")
         plt.gcf().clear()
         plt.imshow(maxima_img)
         plt.xlim(0, 320)
@@ -476,7 +476,7 @@ class LaneDetection:
         plt.axis('off')
         plt.gca().axes.get_xaxis().set_visible(False)
         plt.gca().axes.get_yaxis().set_visible(False)
-        fig_test.canvas.flush_events()
+        fig_test.canvas.flush_events()'''
 
         # output the spline
         return lane_boundary1, lane_boundary2
@@ -499,7 +499,7 @@ class LaneDetection:
             lane_boundary2_points_points = np.array(splev(t, self.lane_boundary2_old))
             plt.plot(lane_boundary2_points_points[0], lane_boundary2_points_points[1]+320-self.cut_size, linewidth=5, color='orange')
         if len(waypoints):
-            plt.scatter(waypoints[0], waypoints[1]+320-self.cut_size, color='white')
+            plt.scatter(waypoints[:,0], waypoints[:,1]+320-self.cut_size, color='blue')
 
         plt.axis('off')
         #plt.xlim((-0.5,95.5))
