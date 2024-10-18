@@ -14,7 +14,7 @@ class LongitudinalController:
         PID_step()
         control()
     '''
-    def __init__(self, KP=0.01, KI=0.0, KD=0.0):
+    def __init__(self, KP=0.01, KI=0.001, KD=0.01):
         self.last_error = 0
         self.sum_error = 0
         self.last_control = 0
@@ -45,6 +45,16 @@ class LongitudinalController:
         # define error from set point target_speed to speed 
 
         # derive PID elements
+
+        e = target_speed - speed
+        delta = e - self.last_error
+        self.last_error = e
+        self.sum_error += e
+        if self.sum_error > 1:
+            self.sum_error = 1
+        if self.sum_error < -1:
+            self.sum_error = -1
+        control = self.KP * e + self.KD * delta + self.KI * self.sum_error
 
         return control
 
