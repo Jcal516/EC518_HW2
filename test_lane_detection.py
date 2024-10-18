@@ -23,7 +23,7 @@ fig_test = plt.figure("test")
 plt.ion()
 plt.show()
 
-def start_camera():
+def start_camera(): # take input from a carla autopilot
     camera.run()
 
 t1 = threading.Thread(target=start_camera, args=())
@@ -41,7 +41,7 @@ while True:
     index = camera.get_index()
     image = cv2.imread("frame.jpg")
     s = np.asarray(image)
-    if(not s.size):
+    if(s.size != 320*240*3):
         continue
 
     splines = LD_module.lane_detection(s, fig_test)
