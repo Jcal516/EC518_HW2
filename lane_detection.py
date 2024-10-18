@@ -170,8 +170,23 @@ class LaneDetection:
             gradient_sum[i,:] = np.convolve([-1,0,1], gray_image[i,:], 'same')
         gradient_sum = np.absolute(gradient_sum)
         gradient_sum[gradient_sum < percent * np.max(gradient_sum) / 100] = 0
+
         gradient_sum[:,0] = 0 # sees the start of the image as an edge, get rid of that
         gradient_sum[:,-1] = 0
+
+        for i in range(gray_image.shape[0]): # sees bev cone as an edge, get rid of that
+            for j in range(gray_image.shape[1]):
+                if(gray_image[i,j] == 0):
+                    gradient_sum[i,j] = 0
+                    try:
+                        gradient_sum[i,j + 1] = 0
+                    except:
+                        1 + 1
+                    try:
+                        gradient_sum[i,j - 1] = 0
+                    except:
+                        True
+
         return gradient_sum
 
 
@@ -191,30 +206,16 @@ class LaneDetection:
         '''
 
         np.savetxt("a.csv", gradient_sum, delimiter=",")
-        left_m = 0.6503298443658532
-        left_b = -1.25496632094531324 + 3
-        right_m = -0.6506915142991083
-        right_b = 320.32971167369874 - 160 + 1
 
         argmaxima = np.zeros((gradient_sum.shape[0], 2), dtype='int')
         left = gradient_sum[:, 0 : int(gradient_sum.shape[1] / 2)]
         right = gradient_sum[:, int(gradient_sum.shape[1] / 2) - 1: -1]
         for i in range(gradient_sum.shape[0]):
-            index = int(i * left_m + left_b)
-            if(index < 0):
-                index = 0
-            if(index > left.shape[1] - 2):
-                index = left.shape[1] - 2
-            argmaxima[i,0] = np.argmax(left[i,index:-1]) + index
-            if(np.max(left[i,index:-1]) == 0):
+            argmaxima[i,0] = np.argmax(left[i,:])
+            if(np.max(left[i,:]) == 0):
                 argmaxima[i,0] = -1
-            index = int(i * right_m + right_b)
-            if(index < 1):
-                index = 1
-            if(index > right.shape[1]):
-                index = right.shape[1]
-            argmaxima[i,1] = np.argmax(right[i,0:index]) + right.shape[1] - 1
-            if(np.max(right[i,0:index]) == 0):
+            argmaxima[i,1] = np.argmax(right[i,:]) + right.shape[1] - 1
+            if(np.max(right[i,:]) == 0):
                 argmaxima[i,1] = -1
 
         return argmaxima
@@ -377,6 +378,8 @@ class LaneDetection:
             bev = self.front2bev(self.state_image_full_old)
         else:
             self.state_image_full_old = state_image_full
+
+        bev = bev[::-1] # flip right side up, don't know why its upside down in the first place but
 
         gray_state = np.dot(bev, [0.333, 0.333, 0.333]) # evenly sample each channel
 
