@@ -1,0 +1,601 @@
+[2024-10-12 13:04] [!] Train from scratch
+[2024-10-12 13:04] 
+
+
+######################### Config Informations #########################
+dataset: cityscapes
+num_class: 19
+model: bisenetv2
+encoder: None
+decoder: None
+loss_type: ohem
+optimizer_type: adam
+lr_policy: cos_warmup
+total_epoch: 200
+train_bs: 8
+val_bs: 10
+train_num: 2968
+val_num: 500
+gpu_num: 1
+num_workers: 8
+amp_training: False
+DDP: False
+kd_training: False
+synBN: True
+use_ema: True
+use_aux: True
+#######################################################################
+
+
+[2024-10-12 13:38] [!] Train from scratch
+[2024-10-12 13:38] 
+
+
+######################### Config Informations #########################
+dataset: cityscapes
+num_class: 19
+model: bisenetv2
+encoder: None
+decoder: None
+loss_type: ohem
+optimizer_type: adam
+lr_policy: cos_warmup
+total_epoch: 200
+train_bs: 8
+val_bs: 10
+train_num: 2968
+val_num: 500
+gpu_num: 1
+num_workers: 8
+amp_training: False
+DDP: False
+kd_training: False
+synBN: True
+use_ema: True
+use_aux: True
+#######################################################################
+
+
+[2024-10-12 17:09]  Epoch0 mIoU: 0.1668    | best mIoU so far: 0.0000
+
+[2024-10-12 19:17]  Epoch1 mIoU: 0.2126    | best mIoU so far: 0.1668
+
+[2024-10-12 21:12]  Epoch2 mIoU: 0.2539    | best mIoU so far: 0.2126
+
+[2024-10-12 23:52] [!] Train from scratch
+[2024-10-12 23:52] 
+
+
+######################### Config Informations #########################
+dataset: cityscapes
+num_class: 19
+model: bisenetv2
+encoder: None
+decoder: None
+loss_type: ohem
+optimizer_type: adam
+lr_policy: cos_warmup
+total_epoch: 200
+train_bs: 32
+val_bs: 10
+train_num: 2944
+val_num: 500
+gpu_num: 4
+num_workers: 32
+amp_training: False
+DDP: False
+kd_training: False
+synBN: True
+use_ema: True
+use_aux: True
+#######################################################################
+
+
+[2024-10-12 23:54]  Epoch0 mIoU: 0.1199    | best mIoU so far: 0.0000
+
+[2024-10-12 23:55]  Epoch1 mIoU: 0.1369    | best mIoU so far: 0.1199
+
+[2024-10-12 23:56]  Epoch2 mIoU: 0.1979    | best mIoU so far: 0.1369
+
+[2024-10-12 23:57]  Epoch3 mIoU: 0.2275    | best mIoU so far: 0.1979
+
+[2024-10-12 23:58]  Epoch4 mIoU: 0.2569    | best mIoU so far: 0.2275
+
+[2024-10-12 23:59]  Epoch5 mIoU: 0.2464    | best mIoU so far: 0.2569
+
+[2024-10-13 00:01]  Epoch6 mIoU: 0.2834    | best mIoU so far: 0.2569
+
+[2024-10-13 00:02]  Epoch7 mIoU: 0.2694    | best mIoU so far: 0.2834
+
+[2024-10-13 00:03]  Epoch8 mIoU: 0.3167    | best mIoU so far: 0.2834
+
+[2024-10-13 00:04]  Epoch9 mIoU: 0.3007    | best mIoU so far: 0.3167
+
+[2024-10-13 00:05]  Epoch10 mIoU: 0.3233    | best mIoU so far: 0.3167
+
+[2024-10-13 00:06]  Epoch11 mIoU: 0.3437    | best mIoU so far: 0.3233
+
+[2024-10-13 00:07]  Epoch12 mIoU: 0.3448    | best mIoU so far: 0.3437
+
+[2024-10-13 00:09]  Epoch13 mIoU: 0.3425    | best mIoU so far: 0.3448
+
+[2024-10-13 00:10]  Epoch14 mIoU: 0.3720    | best mIoU so far: 0.3448
+
+[2024-10-13 00:11]  Epoch15 mIoU: 0.3889    | best mIoU so far: 0.3720
+
+[2024-10-13 00:12]  Epoch16 mIoU: 0.3872    | best mIoU so far: 0.3889
+
+[2024-10-13 00:13]  Epoch17 mIoU: 0.3924    | best mIoU so far: 0.3889
+
+[2024-10-13 00:14]  Epoch18 mIoU: 0.3884    | best mIoU so far: 0.3924
+
+[2024-10-13 00:15]  Epoch19 mIoU: 0.4059    | best mIoU so far: 0.3924
+
+[2024-10-13 00:17]  Epoch20 mIoU: 0.4004    | best mIoU so far: 0.4059
+
+[2024-10-13 00:18]  Epoch21 mIoU: 0.4012    | best mIoU so far: 0.4059
+
+[2024-10-13 00:19]  Epoch22 mIoU: 0.3707    | best mIoU so far: 0.4059
+
+[2024-10-13 00:20]  Epoch23 mIoU: 0.4352    | best mIoU so far: 0.4059
+
+[2024-10-13 00:21]  Epoch24 mIoU: 0.4271    | best mIoU so far: 0.4352
+
+[2024-10-13 00:22]  Epoch25 mIoU: 0.4073    | best mIoU so far: 0.4352
+
+[2024-10-13 00:23]  Epoch26 mIoU: 0.4424    | best mIoU so far: 0.4352
+
+[2024-10-13 00:24]  Epoch27 mIoU: 0.4227    | best mIoU so far: 0.4424
+
+[2024-10-13 00:25]  Epoch28 mIoU: 0.4656    | best mIoU so far: 0.4424
+
+[2024-10-13 00:27]  Epoch29 mIoU: 0.4479    | best mIoU so far: 0.4656
+
+[2024-10-13 00:28]  Epoch30 mIoU: 0.4507    | best mIoU so far: 0.4656
+
+[2024-10-13 00:29]  Epoch31 mIoU: 0.4580    | best mIoU so far: 0.4656
+
+[2024-10-13 00:30]  Epoch32 mIoU: 0.4857    | best mIoU so far: 0.4656
+
+[2024-10-13 00:31]  Epoch33 mIoU: 0.4687    | best mIoU so far: 0.4857
+
+[2024-10-13 00:32]  Epoch34 mIoU: 0.4800    | best mIoU so far: 0.4857
+
+[2024-10-13 00:33]  Epoch35 mIoU: 0.4904    | best mIoU so far: 0.4857
+
+[2024-10-13 00:35]  Epoch36 mIoU: 0.4723    | best mIoU so far: 0.4904
+
+[2024-10-13 00:36]  Epoch37 mIoU: 0.4972    | best mIoU so far: 0.4904
+
+[2024-10-13 00:37]  Epoch38 mIoU: 0.4915    | best mIoU so far: 0.4972
+
+[2024-10-13 00:38]  Epoch39 mIoU: 0.4724    | best mIoU so far: 0.4972
+
+[2024-10-13 00:39]  Epoch40 mIoU: 0.4692    | best mIoU so far: 0.4972
+
+[2024-10-13 00:40]  Epoch41 mIoU: 0.4792    | best mIoU so far: 0.4972
+
+[2024-10-13 00:42]  Epoch42 mIoU: 0.4963    | best mIoU so far: 0.4972
+
+[2024-10-13 00:43]  Epoch43 mIoU: 0.4914    | best mIoU so far: 0.4972
+
+[2024-10-13 00:44]  Epoch44 mIoU: 0.5354    | best mIoU so far: 0.4972
+
+[2024-10-13 00:45]  Epoch45 mIoU: 0.4958    | best mIoU so far: 0.5354
+
+[2024-10-13 00:46]  Epoch46 mIoU: 0.5176    | best mIoU so far: 0.5354
+
+[2024-10-13 00:47]  Epoch47 mIoU: 0.4957    | best mIoU so far: 0.5354
+
+[2024-10-13 00:48]  Epoch48 mIoU: 0.5165    | best mIoU so far: 0.5354
+
+[2024-10-13 00:50]  Epoch49 mIoU: 0.5248    | best mIoU so far: 0.5354
+
+[2024-10-13 00:51]  Epoch50 mIoU: 0.5049    | best mIoU so far: 0.5354
+
+[2024-10-13 00:52]  Epoch51 mIoU: 0.5398    | best mIoU so far: 0.5354
+
+[2024-10-13 00:53]  Epoch52 mIoU: 0.5186    | best mIoU so far: 0.5398
+
+[2024-10-13 00:54]  Epoch53 mIoU: 0.5321    | best mIoU so far: 0.5398
+
+[2024-10-13 00:55]  Epoch54 mIoU: 0.5260    | best mIoU so far: 0.5398
+
+[2024-10-13 00:56]  Epoch55 mIoU: 0.5373    | best mIoU so far: 0.5398
+
+[2024-10-13 00:58]  Epoch56 mIoU: 0.5480    | best mIoU so far: 0.5398
+
+[2024-10-13 00:59]  Epoch57 mIoU: 0.5356    | best mIoU so far: 0.5480
+
+[2024-10-13 01:00]  Epoch58 mIoU: 0.5149    | best mIoU so far: 0.5480
+
+[2024-10-13 01:01]  Epoch59 mIoU: 0.5391    | best mIoU so far: 0.5480
+
+[2024-10-13 01:02]  Epoch60 mIoU: 0.5537    | best mIoU so far: 0.5480
+
+[2024-10-13 01:03]  Epoch61 mIoU: 0.5604    | best mIoU so far: 0.5537
+
+[2024-10-13 01:04]  Epoch62 mIoU: 0.5651    | best mIoU so far: 0.5604
+
+[2024-10-13 01:06]  Epoch63 mIoU: 0.5427    | best mIoU so far: 0.5651
+
+[2024-10-13 01:07]  Epoch64 mIoU: 0.5569    | best mIoU so far: 0.5651
+
+[2024-10-13 01:08]  Epoch65 mIoU: 0.5474    | best mIoU so far: 0.5651
+
+[2024-10-13 01:09]  Epoch66 mIoU: 0.5229    | best mIoU so far: 0.5651
+
+[2024-10-13 01:10]  Epoch67 mIoU: 0.5610    | best mIoU so far: 0.5651
+
+[2024-10-13 01:11]  Epoch68 mIoU: 0.5537    | best mIoU so far: 0.5651
+
+[2024-10-13 01:12]  Epoch69 mIoU: 0.5728    | best mIoU so far: 0.5651
+
+[2024-10-13 01:14]  Epoch70 mIoU: 0.5738    | best mIoU so far: 0.5728
+
+[2024-10-13 01:15]  Epoch71 mIoU: 0.5743    | best mIoU so far: 0.5738
+
+[2024-10-13 01:16]  Epoch72 mIoU: 0.5573    | best mIoU so far: 0.5743
+
+[2024-10-13 01:17]  Epoch73 mIoU: 0.5749    | best mIoU so far: 0.5743
+
+[2024-10-13 01:18]  Epoch74 mIoU: 0.5813    | best mIoU so far: 0.5749
+
+[2024-10-13 01:19]  Epoch75 mIoU: 0.5922    | best mIoU so far: 0.5813
+
+[2024-10-13 01:21]  Epoch76 mIoU: 0.5756    | best mIoU so far: 0.5922
+
+[2024-10-13 01:22]  Epoch77 mIoU: 0.5721    | best mIoU so far: 0.5922
+
+[2024-10-13 01:23]  Epoch78 mIoU: 0.5399    | best mIoU so far: 0.5922
+
+[2024-10-13 01:24]  Epoch79 mIoU: 0.5846    | best mIoU so far: 0.5922
+
+[2024-10-13 01:25]  Epoch80 mIoU: 0.5882    | best mIoU so far: 0.5922
+
+[2024-10-13 01:26]  Epoch81 mIoU: 0.5779    | best mIoU so far: 0.5922
+
+[2024-10-13 01:27]  Epoch82 mIoU: 0.5825    | best mIoU so far: 0.5922
+
+[2024-10-13 01:29]  Epoch83 mIoU: 0.5976    | best mIoU so far: 0.5922
+
+[2024-10-13 01:30]  Epoch84 mIoU: 0.5807    | best mIoU so far: 0.5976
+
+[2024-10-13 01:31]  Epoch85 mIoU: 0.5856    | best mIoU so far: 0.5976
+
+[2024-10-13 01:32]  Epoch86 mIoU: 0.5773    | best mIoU so far: 0.5976
+
+[2024-10-13 01:33]  Epoch87 mIoU: 0.5911    | best mIoU so far: 0.5976
+
+[2024-10-13 01:34]  Epoch88 mIoU: 0.5928    | best mIoU so far: 0.5976
+
+[2024-10-13 01:35]  Epoch89 mIoU: 0.6111    | best mIoU so far: 0.5976
+
+[2024-10-13 01:37]  Epoch90 mIoU: 0.6026    | best mIoU so far: 0.6111
+
+[2024-10-13 01:38]  Epoch91 mIoU: 0.5844    | best mIoU so far: 0.6111
+
+[2024-10-13 01:39]  Epoch92 mIoU: 0.6084    | best mIoU so far: 0.6111
+
+[2024-10-13 01:40]  Epoch93 mIoU: 0.5944    | best mIoU so far: 0.6111
+
+[2024-10-13 01:41]  Epoch94 mIoU: 0.6094    | best mIoU so far: 0.6111
+
+[2024-10-13 01:42]  Epoch95 mIoU: 0.6115    | best mIoU so far: 0.6111
+
+[2024-10-13 01:43]  Epoch96 mIoU: 0.6217    | best mIoU so far: 0.6115
+
+[2024-10-13 01:44]  Epoch97 mIoU: 0.6054    | best mIoU so far: 0.6217
+
+[2024-10-13 08:46] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/last.pth
+[2024-10-13 08:46] 
+Start predicting...
+
+[2024-10-13 08:51] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/last.pth
+[2024-10-13 08:51] 
+Start predicting...
+
+[2024-10-13 08:52] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/last.pth
+[2024-10-13 08:52] 
+Start predicting...
+
+[2024-10-13 09:17] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 09:17] 
+Start predicting...
+
+[2024-10-13 09:18] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 09:18] 
+Start predicting...
+
+[2024-10-13 09:32] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 09:32] 
+Start predicting...
+
+[2024-10-13 09:36] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 09:36] 
+Start predicting...
+
+[2024-10-13 09:37] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 09:37] 
+Start predicting...
+
+[2024-10-13 09:39] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 09:40] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/last.pth
+[2024-10-13 09:40] Resume training from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/last.pth
+[2024-10-13 09:40] 
+
+
+######################### Config Informations #########################
+dataset: cityscapes
+num_class: 19
+model: bisenetv2
+encoder: None
+decoder: None
+loss_type: ohem
+optimizer_type: adam
+lr_policy: cos_warmup
+total_epoch: 200
+train_bs: 32
+val_bs: 10
+train_num: 2944
+val_num: 500
+gpu_num: 4
+num_workers: 32
+amp_training: False
+DDP: False
+kd_training: False
+synBN: True
+use_ema: True
+use_aux: True
+#######################################################################
+
+
+[2024-10-13 09:41]  Epoch98 mIoU: 0.5849    | best mIoU so far: 0.6217
+
+[2024-10-13 09:43]  Epoch99 mIoU: 0.6013    | best mIoU so far: 0.6217
+
+[2024-10-13 09:44]  Epoch100 mIoU: 0.6165    | best mIoU so far: 0.6217
+
+[2024-10-13 09:45]  Epoch101 mIoU: 0.6132    | best mIoU so far: 0.6217
+
+[2024-10-13 09:46]  Epoch102 mIoU: 0.6185    | best mIoU so far: 0.6217
+
+[2024-10-13 09:47]  Epoch103 mIoU: 0.5913    | best mIoU so far: 0.6217
+
+[2024-10-13 09:48]  Epoch104 mIoU: 0.5883    | best mIoU so far: 0.6217
+
+[2024-10-13 09:49]  Epoch105 mIoU: 0.6253    | best mIoU so far: 0.6217
+
+[2024-10-13 09:50]  Epoch106 mIoU: 0.6048    | best mIoU so far: 0.6253
+
+[2024-10-13 09:52]  Epoch107 mIoU: 0.6255    | best mIoU so far: 0.6253
+
+[2024-10-13 09:53]  Epoch108 mIoU: 0.6296    | best mIoU so far: 0.6255
+
+[2024-10-13 09:54]  Epoch109 mIoU: 0.6309    | best mIoU so far: 0.6296
+
+[2024-10-13 09:55]  Epoch110 mIoU: 0.6205    | best mIoU so far: 0.6309
+
+[2024-10-13 09:56]  Epoch111 mIoU: 0.6349    | best mIoU so far: 0.6309
+
+[2024-10-13 09:57]  Epoch112 mIoU: 0.6119    | best mIoU so far: 0.6349
+
+[2024-10-13 09:58]  Epoch113 mIoU: 0.6096    | best mIoU so far: 0.6349
+
+[2024-10-13 09:59]  Epoch114 mIoU: 0.6311    | best mIoU so far: 0.6349
+
+[2024-10-13 10:01]  Epoch115 mIoU: 0.6327    | best mIoU so far: 0.6349
+
+[2024-10-13 10:02]  Epoch116 mIoU: 0.6266    | best mIoU so far: 0.6349
+
+[2024-10-13 10:03]  Epoch117 mIoU: 0.6406    | best mIoU so far: 0.6349
+
+[2024-10-13 10:04]  Epoch118 mIoU: 0.6292    | best mIoU so far: 0.6406
+
+[2024-10-13 10:05]  Epoch119 mIoU: 0.6264    | best mIoU so far: 0.6406
+
+[2024-10-13 10:06]  Epoch120 mIoU: 0.6403    | best mIoU so far: 0.6406
+
+[2024-10-13 10:07]  Epoch121 mIoU: 0.6409    | best mIoU so far: 0.6406
+
+[2024-10-13 10:08]  Epoch122 mIoU: 0.6331    | best mIoU so far: 0.6409
+
+[2024-10-13 10:10]  Epoch123 mIoU: 0.6211    | best mIoU so far: 0.6409
+
+[2024-10-13 10:11]  Epoch124 mIoU: 0.6436    | best mIoU so far: 0.6409
+
+[2024-10-13 10:12]  Epoch125 mIoU: 0.6487    | best mIoU so far: 0.6436
+
+[2024-10-13 10:13]  Epoch126 mIoU: 0.6417    | best mIoU so far: 0.6487
+
+[2024-10-13 10:14]  Epoch127 mIoU: 0.6483    | best mIoU so far: 0.6487
+
+[2024-10-13 10:15]  Epoch128 mIoU: 0.6473    | best mIoU so far: 0.6487
+
+[2024-10-13 10:16]  Epoch129 mIoU: 0.6434    | best mIoU so far: 0.6487
+
+[2024-10-13 10:17]  Epoch130 mIoU: 0.6526    | best mIoU so far: 0.6487
+
+[2024-10-13 10:19]  Epoch131 mIoU: 0.6558    | best mIoU so far: 0.6526
+
+[2024-10-13 10:20]  Epoch132 mIoU: 0.6558    | best mIoU so far: 0.6558
+
+[2024-10-13 10:21]  Epoch133 mIoU: 0.6461    | best mIoU so far: 0.6558
+
+[2024-10-13 10:22]  Epoch134 mIoU: 0.6571    | best mIoU so far: 0.6558
+
+[2024-10-13 10:23]  Epoch135 mIoU: 0.6519    | best mIoU so far: 0.6571
+
+[2024-10-13 10:24]  Epoch136 mIoU: 0.6473    | best mIoU so far: 0.6571
+
+[2024-10-13 10:25]  Epoch137 mIoU: 0.6366    | best mIoU so far: 0.6571
+
+[2024-10-13 10:26]  Epoch138 mIoU: 0.6488    | best mIoU so far: 0.6571
+
+[2024-10-13 10:28]  Epoch139 mIoU: 0.6629    | best mIoU so far: 0.6571
+
+[2024-10-13 10:29]  Epoch140 mIoU: 0.6576    | best mIoU so far: 0.6629
+
+[2024-10-13 10:30]  Epoch141 mIoU: 0.6575    | best mIoU so far: 0.6629
+
+[2024-10-13 10:31]  Epoch142 mIoU: 0.6522    | best mIoU so far: 0.6629
+
+[2024-10-13 10:32]  Epoch143 mIoU: 0.6511    | best mIoU so far: 0.6629
+
+[2024-10-13 10:33]  Epoch144 mIoU: 0.6559    | best mIoU so far: 0.6629
+
+[2024-10-13 10:34]  Epoch145 mIoU: 0.6547    | best mIoU so far: 0.6629
+
+[2024-10-13 10:35]  Epoch146 mIoU: 0.6645    | best mIoU so far: 0.6629
+
+[2024-10-13 10:36]  Epoch147 mIoU: 0.6622    | best mIoU so far: 0.6645
+
+[2024-10-13 10:38]  Epoch148 mIoU: 0.6650    | best mIoU so far: 0.6645
+
+[2024-10-13 10:39]  Epoch149 mIoU: 0.6568    | best mIoU so far: 0.6650
+
+[2024-10-13 10:40]  Epoch150 mIoU: 0.6644    | best mIoU so far: 0.6650
+
+[2024-10-13 10:41]  Epoch151 mIoU: 0.6576    | best mIoU so far: 0.6650
+
+[2024-10-13 10:42]  Epoch152 mIoU: 0.6457    | best mIoU so far: 0.6650
+
+[2024-10-13 10:43]  Epoch153 mIoU: 0.6668    | best mIoU so far: 0.6650
+
+[2024-10-13 10:44]  Epoch154 mIoU: 0.6655    | best mIoU so far: 0.6668
+
+[2024-10-13 10:45]  Epoch155 mIoU: 0.6627    | best mIoU so far: 0.6668
+
+[2024-10-13 10:47]  Epoch156 mIoU: 0.6679    | best mIoU so far: 0.6668
+
+[2024-10-13 10:48]  Epoch157 mIoU: 0.6662    | best mIoU so far: 0.6679
+
+[2024-10-13 10:49]  Epoch158 mIoU: 0.6656    | best mIoU so far: 0.6679
+
+[2024-10-13 10:50]  Epoch159 mIoU: 0.6648    | best mIoU so far: 0.6679
+
+[2024-10-13 10:51]  Epoch160 mIoU: 0.6627    | best mIoU so far: 0.6679
+
+[2024-10-13 10:52]  Epoch161 mIoU: 0.6594    | best mIoU so far: 0.6679
+
+[2024-10-13 10:53]  Epoch162 mIoU: 0.6600    | best mIoU so far: 0.6679
+
+[2024-10-13 10:54]  Epoch163 mIoU: 0.6699    | best mIoU so far: 0.6679
+
+[2024-10-13 10:55]  Epoch164 mIoU: 0.6748    | best mIoU so far: 0.6699
+
+[2024-10-13 10:57]  Epoch165 mIoU: 0.6654    | best mIoU so far: 0.6748
+
+[2024-10-13 10:58]  Epoch166 mIoU: 0.6734    | best mIoU so far: 0.6748
+
+[2024-10-13 10:59]  Epoch167 mIoU: 0.6737    | best mIoU so far: 0.6748
+
+[2024-10-13 11:00]  Epoch168 mIoU: 0.6682    | best mIoU so far: 0.6748
+
+[2024-10-13 11:01]  Epoch169 mIoU: 0.6613    | best mIoU so far: 0.6748
+
+[2024-10-13 11:02]  Epoch170 mIoU: 0.6716    | best mIoU so far: 0.6748
+
+[2024-10-13 11:03]  Epoch171 mIoU: 0.6744    | best mIoU so far: 0.6748
+
+[2024-10-13 11:04]  Epoch172 mIoU: 0.6759    | best mIoU so far: 0.6748
+
+[2024-10-13 11:06]  Epoch173 mIoU: 0.6736    | best mIoU so far: 0.6759
+
+[2024-10-13 11:07]  Epoch174 mIoU: 0.6759    | best mIoU so far: 0.6759
+
+[2024-10-13 11:08]  Epoch175 mIoU: 0.6714    | best mIoU so far: 0.6759
+
+[2024-10-13 11:09]  Epoch176 mIoU: 0.6679    | best mIoU so far: 0.6759
+
+[2024-10-13 11:10]  Epoch177 mIoU: 0.6758    | best mIoU so far: 0.6759
+
+[2024-10-13 11:11]  Epoch178 mIoU: 0.6747    | best mIoU so far: 0.6759
+
+[2024-10-13 11:12]  Epoch179 mIoU: 0.6705    | best mIoU so far: 0.6759
+
+[2024-10-13 11:13]  Epoch180 mIoU: 0.6709    | best mIoU so far: 0.6759
+
+[2024-10-13 11:14]  Epoch181 mIoU: 0.6726    | best mIoU so far: 0.6759
+
+[2024-10-13 11:16]  Epoch182 mIoU: 0.6714    | best mIoU so far: 0.6759
+
+[2024-10-13 11:17]  Epoch183 mIoU: 0.6738    | best mIoU so far: 0.6759
+
+[2024-10-13 11:18]  Epoch184 mIoU: 0.6769    | best mIoU so far: 0.6759
+
+[2024-10-13 11:19]  Epoch185 mIoU: 0.6760    | best mIoU so far: 0.6769
+
+[2024-10-13 11:20]  Epoch186 mIoU: 0.6758    | best mIoU so far: 0.6769
+
+[2024-10-13 11:21]  Epoch187 mIoU: 0.6775    | best mIoU so far: 0.6769
+
+[2024-10-13 11:22]  Epoch188 mIoU: 0.6784    | best mIoU so far: 0.6775
+
+[2024-10-13 11:23]  Epoch189 mIoU: 0.6774    | best mIoU so far: 0.6784
+
+[2024-10-13 11:25]  Epoch190 mIoU: 0.6756    | best mIoU so far: 0.6784
+
+[2024-10-13 11:26]  Epoch191 mIoU: 0.6755    | best mIoU so far: 0.6784
+
+[2024-10-13 11:27]  Epoch192 mIoU: 0.6749    | best mIoU so far: 0.6784
+
+[2024-10-13 11:28]  Epoch193 mIoU: 0.6747    | best mIoU so far: 0.6784
+
+[2024-10-13 11:29]  Epoch194 mIoU: 0.6755    | best mIoU so far: 0.6784
+
+[2024-10-13 11:30]  Epoch195 mIoU: 0.6757    | best mIoU so far: 0.6784
+
+[2024-10-13 11:31]  Epoch196 mIoU: 0.6772    | best mIoU so far: 0.6784
+
+[2024-10-13 11:32]  Epoch197 mIoU: 0.6763    | best mIoU so far: 0.6784
+
+[2024-10-13 11:34]  Epoch198 mIoU: 0.6771    | best mIoU so far: 0.6784
+
+[2024-10-13 11:35]  Epoch199 mIoU: 0.6770    | best mIoU so far: 0.6784
+
+[2024-10-13 11:35] 
+Train 200 epochs finished!
+
+[2024-10-13 11:35] ##################################################
+Validation for the best checkpoint...
+[2024-10-13 11:35] 
+
+Train 200 epochs finished.
+
+Best mIoU is: 0.6784
+
+[2024-10-13 11:35] Best validation score is 0.6783632636070251.
+
+[2024-10-13 11:38] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/last.pth
+[2024-10-13 11:38] 
+Start predicting...
+
+[2024-10-13 11:42] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 11:42] 
+Start predicting...
+
+[2024-10-13 11:44] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 11:44] 
+Start predicting...
+
+[2024-10-13 11:47] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 11:47] 
+Start predicting...
+
+[2024-10-13 11:49] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 11:49] 
+Start predicting...
+
+[2024-10-13 13:18] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-13 13:18] 
+Start predicting...
+
+[2024-10-17 11:09] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-17 11:09] 
+Start predicting...
+
+[2024-10-18 17:15] Load model state dict from /projectnb/rlvn/students/jasonc16/Assignment2/realtime-semantic-segmentation-pytorch-main/save/best.pth
+[2024-10-18 17:15] 
+Start predicting...
+
