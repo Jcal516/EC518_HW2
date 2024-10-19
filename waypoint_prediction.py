@@ -78,7 +78,7 @@ def waypoint_prediction(roadside1_spline, roadside2_spline, num_waypoints=6, way
         ##### TODO #####
      
         # create spline arguments
-        print(type(roadside1_spline))
+        #print(type(roadside1_spline))
         t1,c1,k1 = roadside1_spline
         t2,c2,k2 = roadside2_spline
     
@@ -90,13 +90,13 @@ def waypoint_prediction(roadside1_spline, roadside2_spline, num_waypoints=6, way
         x = np.linspace(0,1,num_waypoints)
         roadside1_points = np.array(splev(x,roadside1_spline)).T
         roadside2_points = np.array(splev(x,roadside2_spline)).T
-        print(roadside1_points)
-        print(roadside2_points)
+        #print(roadside1_points)
+        #print(roadside2_points)
         # derive center between corresponding roadside points
         way_points = (roadside1_points + roadside2_points) / 2
-        print("way")
-        print(way_points)
-        print(way_points.shape)
+        #print("way")
+        #print(way_points)
+        #print(way_points.shape)
         # output way_points with shape(2 x Num_waypoints)
         return way_points
     
@@ -121,7 +121,7 @@ def waypoint_prediction(roadside1_spline, roadside2_spline, num_waypoints=6, way
         #print(roadside1_points)
         #print(roadside2_points)
         # derive center between corresponding roadside points
-        print(roadside1_points.shape)
+        #print(roadside1_points.shape)
         way_points_center = (roadside1_points.reshape(2,-1) + roadside2_points.reshape(2,-1)) / 2
         #print(way_points_center)
         # optimization
@@ -151,14 +151,14 @@ def target_speed_prediction(waypoints, num_waypoints_used=5,
     '''
     waypoints = waypoints.reshape(2,-1)
     curv = curvature(waypoints[:,:2*num_waypoints_used:2])
-    print("curv=")
-    print(curv)
+    #print("curv=")
+    #print(curv)
     curv_new = num_waypoints_used-2-curv
-    print("num_waypoints - 2 - curve = ")
-    print(curv_new)
-    print("exp = ")
+    #print("num_waypoints - 2 - curve = ")
+    #print(curv_new)
+    #print("exp = ")
     exponent = -1 * exp_constant * np.abs(curv)
-    print(exponent)
+    #print(exponent)
     target_speed = ((max_speed - offset_speed) * np.exp(exponent)) + offset_speed
 
     return target_speed
